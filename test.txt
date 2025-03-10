@@ -1,0 +1,11 @@
+
+
+ShoppingList = ["eggs", 5, "butter"]
+shopping_list = ""
+i = 0
+while (i < 3) {
+    item = ShoppingList[i]
+    shopping_list = shopping_list + ", " + item
+    i = i + 1
+}
+print shopping_list

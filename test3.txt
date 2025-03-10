@@ -1,0 +1,5 @@
+print "hello" + " " + "world"
+print "foo" + "bar" == "foobar"
+print "10 corgis" != "10" + "corgis"
+print 5 + 5
+print (5 + 5) == 10

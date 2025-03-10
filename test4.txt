@@ -1,0 +1,6 @@
+quickMaths = 10
+quickMaths = quickMaths + 2
+print quickMaths
+
+billy = "hello"
+print billy
