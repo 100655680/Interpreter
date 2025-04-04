@@ -1,6 +1,33 @@
-quickMaths = 10
-quickMaths = quickMaths + 2
-print quickMaths
+print" # Create a dictionary literal with two entries."
+myDict = dict {"name": "Alice", "age": 30}
+print myDict          
+print" # Expected output: {name=Alice, age=30} (format may vary)"
 
-billy = "hello"
-print billy
+print" # Add a new entry using put."
+put(myDict, "city", "London")
+print myDict          
+print" # Expected output: {name=Alice, age=30, city=London}"
+
+print" # Update an existing entry using put."
+put(myDict, "age", 31)
+print myDict          
+print" # Expected output: {name=Alice, age=31, city=London}"
+
+print" # Remove an entry using dict_remove."
+removedValue = dict_remove(myDict, "name")
+print removedValue    
+print" # Expected output: Alice"
+print myDict          
+print" # Expected output: {age=31, city=London}"
+put(myDict, "Bob", 20)
+print myDict
+
+
+myDict = dict {"record1": dict {"name": "Alice", "age": 30}}
+put(myDict, "record2", dict {"name": "Bob", "age": 20})
+print myDict
+
+records = []
+append(records, dict {"name": "Alice", "age": 30})
+append(records, dict {"name": "Bob", "age": 20})
+print records

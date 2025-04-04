@@ -1,11 +1,149 @@
+print "********STAGE 1 TESTS********"
+print 1 - 2
+print 2.5 + 2.5 - 1.25
+print (10 * 2) / 6
+print 8.5 / (2 * 9) - -3
+print "*****************************"
 
+print "********STAGE 2 TESTS********"
+print true == false
+print true != false
+print (5 < 10)
+print !(5 - 4 > 3 * 2 == !false)
+print true and true
+print false and true
+print (0 < 1) or false
+print false or false
+print "*****************************"
 
+print "********STAGE 3 TESTS********"
+print "hello" + " " + "world"
+print "foo" + "bar" == "foobar"
+print "10 corgis" != "10" + "corgis"
+print "10 corgis" != "10 " + "corgis"
+print "*****************************"
+
+print "********STAGE 4 TESTS********"
+quickMaths = 10
+quickMaths = quickMaths + 2
+print quickMaths
+floatTest = 1.0
+floatTest = floatTest + 5
+print floatTest
+print "I have implicit type conversion when using PLUS - number will be converted to string"
+stringCatTest = "10 corgis"
+stringCatTest = stringCatTest + 5 + " more corgis"
+print stringCatTest
+varible5= 5
+varible5 = varible5 + " : this line should start with a 5"
+print varible5 
+varible5decimal = 5.0
+varible5decimal = varible5decimal + " : this line should start with a 5.0"
+print varible5decimal
+
+print "*****************************"
+
+print "********STAGE 6 TESTS********"
+print "My Vesrions does not take input but has 3 preset items in a list it will run through"
+print "Below is lists 3 strings"
+ShoppingList = ["eggs", "milk", "butter"]
+shopping_list = ""
+i = 0
+while (i < 3) {
+    item = ShoppingList[i]
+        if (shopping_list == "")
+            shopping_list = item
+        else
+            shopping_list = shopping_list + ", " + item
+    i = i + 1
+}
+print shopping_list
+
+print "Below is using implicit type convert on the 5 to make it a string"
 ShoppingList = ["eggs", 5, "butter"]
 shopping_list = ""
 i = 0
 while (i < 3) {
     item = ShoppingList[i]
-    shopping_list = shopping_list + ", " + item
+     if (shopping_list == "")
+            shopping_list = item
+        else
+            shopping_list = shopping_list + ", " + item
     i = i + 1
 }
 print shopping_list
+
+
+
+print "Below is a lists of 3 number - using implicit type convert for PLUS it will list as strings"
+ShoppingList = [2,4.0,6]
+shopping_list = ""
+i = 0
+while (i < 3) {
+    item = ShoppingList[i]
+     if (shopping_list == "")
+            shopping_list = item
+        else
+            shopping_list = shopping_list + ", " + item
+    i = i + 1
+}
+print shopping_list
+print "I will next print item - this was declared locally so will be unavailiable now"
+print item
+print "*****************************"
+print "Attempt to print an undeclared variable - will give a error to user"
+print undeclaredvariable
+print "I will now declare this variable, set it and print agian..."
+undeclaredvariable = "this is now set"
+print undeclaredvariable
+
+print "*********Local & Global Variables handled on level********************"
+
+globalVar = "I am global" 
+{ localVar = "I am local" print globalVar + " " + localVar }
+print globalVar 
+print localVar
+
+print "*********List - append and remove********************"
+myList = ["a", "b"]
+append(myList, "c")
+print myList          
+remove(myList, 1)
+print myList   
+
+print "***********************"
+people = [ dict {"name": "Alice", "age": 30}, dict {"name": "Bob", "age": 20} ]
+print people
+
+print "Dict with just Alice"
+myDict = dict {"name": "Alice", "age": 30}
+print myDict
+print "Put in Bob and print"
+put(myDict, "Bob", 20)
+print myDict
+print "Put in Jon and print"
+put(myDict, "Jon", 75)
+print myDict
+print "Remove Bob and Print"
+dict_remove(myDict, "Bob")
+print myDict
+
+print "****FUNCTIONS*******************"
+fun add(a, b) {
+    return a + b
+}
+
+result = add(5, 10)
+print result  
+
+fun greet(name) {
+    return "Hello, " + name
+}
+
+print greet("Billy")  
+
+print "****A List of Dictionary values*******************"
+records = []
+append(records, dict {"name": "Steve", "age": 30})
+append(records, dict {"name": "Youbing", "age": 20})
+print records

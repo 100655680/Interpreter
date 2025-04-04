@@ -1,4 +1,8 @@
-5 * 5
-5 / 5
-5 + 5
-5 - 5
+stringCatTest = "10 corgis"
+stringCatTest = stringCatTest + 5 + " more corgis"
+print stringCatTest
+
+
+errorTest = 5
+errorTest = errorTest + "insert string here"
+print errorTest

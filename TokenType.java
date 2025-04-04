@@ -3,7 +3,7 @@ public enum TokenType {
     LEFT_PAREN, RIGHT_PAREN,
     LEFT_BRACE, RIGHT_BRACE,
     LEFT_BRACKET, RIGHT_BRACKET,  // New tokens for array literals and access
-    COMMA,
+    COMMA, COLON, SEMICOLON,
     PLUS, MINUS, STAR, SLASH,
     
     // One or two character tokens
@@ -22,6 +22,9 @@ public enum TokenType {
     IDENTIFIER,
     
     // Keywords
+    FUN, 
+    RETURN,
+    DICT,
     TRUE,
     FALSE,
     AND,

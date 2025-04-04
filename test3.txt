@@ -1,5 +1,33 @@
-print "hello" + " " + "world"
-print "foo" + "bar" == "foobar"
-print "10 corgis" != "10" + "corgis"
-print 5 + 5
-print (5 + 5) == 10
+print "Create a list with two elements."
+myList = ["apple", "banana"]
+
+print "Append an element to the list."
+append(myList, "cherry")
+print myList          
+print "# Expected output: [apple, banana, cherry]"
+
+print "Access an element at a specific index."
+item = myList[0]
+print item           
+print "# Expected output: apple"
+
+print "Remove the element at index 1 (should remove "banana")."
+removedItem = remove(myList, 1)
+print removedItem     
+print "# Expected output: banana"
+
+print "Print the list after removal."
+print myList          
+print "# Expected output: [apple, cherry]"
+
+print "Further back-insert an element."
+append(myList, "date")
+print myList          
+print "# Expected output: [apple, cherry, date]"
+
+print "Access the element at index 2."
+print myList[2]       
+print "# Expected output: date"
+
+
+

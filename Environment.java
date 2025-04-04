@@ -2,16 +2,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Environment {
-    private Map<String, Value> values = new HashMap<>();
-    private static Environment instance;
+    private final Map<String, Value> values = new HashMap<>();
+    private final Environment parent;
 
-    private Environment() { }
+    public Environment() {
+        this.parent = null;
+    }
 
-    public static Environment getInstance() {
-        if (instance == null) {
-            instance = new Environment();
-        }
-        return instance;
+    public Environment(Environment parent) {
+        this.parent = parent;
     }
 
     public void define(String name, Value value) {
@@ -21,6 +20,8 @@ public class Environment {
     public Value get(String name) {
         if (values.containsKey(name)) {
             return values.get(name);
+        } else if (parent != null) {
+            return parent.get(name);
         }
         throw new RuntimeException("Undefined variable: " + name);
     }
@@ -28,6 +29,8 @@ public class Environment {
     public void assign(String name, Value value) {
         if (values.containsKey(name)) {
             values.put(name, value);
+        } else if (parent != null) {
+            parent.assign(name, value);
         } else {
             throw new RuntimeException("Undefined variable: " + name);
         }

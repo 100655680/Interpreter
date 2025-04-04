@@ -1,0 +1,6 @@
+print "********STAGE 3 TESTS********"
+print "hello" + "5" + "world"
+print "hello" + 5 + "world"
+print "hello" + "5.0" + "world"
+print "hello" + 5.0 + "world"
+print "*****************************"

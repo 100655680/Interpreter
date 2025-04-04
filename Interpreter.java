@@ -3,17 +3,16 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
 
-public class Stage5Calculator {
+public class Interpreter {
     public static void main(String[] args) {
         if (args.length < 1) {
-            System.out.println("Usage: java Stage5Calculator <path-to-file>");
+            System.out.println("Usage: java Interpreter <path-to-file>");
             return;
         }
 
         String filePath = args[0];
-        Environment env = Environment.getInstance();
+        Environment globalEnv = new Environment();
 
-        // Read entire file into one string.
         StringBuilder sourceBuilder = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
@@ -26,9 +25,12 @@ public class Stage5Calculator {
         }
         String source = sourceBuilder.toString();
 
-        // Lex and parse the entire program.
         Lexer lexer = new Lexer(source);
         List<Token> tokens = lexer.scanTokens();
+        for (Token token : tokens) {
+            System.out.println(token);
+        }
+
         Parser parser = new Parser(tokens);
         List<Stmt> statements;
         try {
@@ -38,10 +40,9 @@ public class Stage5Calculator {
             return;
         }
 
-        // Execute each statement.
         for (Stmt stmt : statements) {
             try {
-                stmt.execute(env);
+                stmt.execute(globalEnv);
             } catch (RuntimeException e) {
                 System.err.println("Execution Error: " + e.getMessage());
             }

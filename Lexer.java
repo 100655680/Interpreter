@@ -48,6 +48,9 @@ public class Lexer {
             case ',':
                 addToken(TokenType.COMMA);
                 break;
+            case ':':
+                addToken(TokenType.COLON);
+                break;
             case '+':
                 addToken(TokenType.PLUS);
                 break;
@@ -131,6 +134,15 @@ public class Lexer {
         }
         String text = source.substring(start, current);
         switch (text) {
+            case "fun":
+                addToken(TokenType.FUN);
+                break;
+            case "return":
+                addToken(TokenType.RETURN);
+                break;
+            case "dict":
+                addToken(TokenType.DICT);
+                break;
             case "true":
                 addToken(TokenType.TRUE);
                 break;
@@ -172,7 +184,7 @@ public class Lexer {
             System.err.println("Lexer Error: Unterminated string.");
             return;
         }
-        advance(); // consume closing "
+        advance();
         String value = source.substring(start + 1, current - 1);
         tokens.add(new Token(TokenType.STRING, value, null));
     }
