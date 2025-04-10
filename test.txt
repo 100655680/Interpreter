@@ -147,3 +147,4 @@ records = []
 append(records, dict {"name": "Steve", "age": 30})
 append(records, dict {"name": "Youbing", "age": 20})
 print records
+printupper records

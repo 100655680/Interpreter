@@ -30,6 +30,7 @@ public enum TokenType {
     AND,
     OR,
     PRINT,
+    PRINTUPPER,
     IF,
     ELSE,
     WHILE,

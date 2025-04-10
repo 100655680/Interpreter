@@ -17,6 +17,20 @@ public abstract class Stmt {
         }
     }
 
+    public static class PrintUpper extends Stmt {
+        public final Expr expression;
+    public PrintUpper(Expr expression) {
+            this.expression = expression;
+        }
+    @Override
+        public void execute(Environment env) {
+            Value value = expression.evaluate(env);
+            // Convert to upper case before printing
+            System.out.println(value.toString().toUpperCase());
+        }
+    }
+  
+
     public static class Var extends Stmt {
         public final String name;
         public final Expr expression;

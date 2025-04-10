@@ -54,6 +54,7 @@ public class Parser {
         if (match(TokenType.WHILE)) return whileStmt();
         if (match(TokenType.LEFT_BRACE)) return new Stmt.Block(block());
         if (match(TokenType.PRINT)) return printStmt();
+        if (match(TokenType.PRINTUPPER)) return printUpperStmt();
         if (check(TokenType.IDENTIFIER) && peekNext().type == TokenType.EQUAL) return varStmt();
         return expressionStmt();
     }
@@ -98,6 +99,11 @@ public class Parser {
         }
         consume(TokenType.RIGHT_BRACE, "Expect '}' after block.");
         return statements;
+    }
+
+    private Stmt printUpperStmt() throws ParseException {
+        Expr expr = expression();
+        return new Stmt.PrintUpper(expr);
     }
 
     private Stmt printStmt() throws ParseException {

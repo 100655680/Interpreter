@@ -158,6 +158,9 @@ public class Lexer {
             case "print":
                 addToken(TokenType.PRINT);
                 break;
+            case "printupper":
+                addToken(TokenType.PRINTUPPER);
+                break;
             case "if":
                 addToken(TokenType.IF);
                 break;

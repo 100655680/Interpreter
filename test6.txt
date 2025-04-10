@@ -1,0 +1,2 @@
+printupper "this is lower case but should print in upper"
+print "this SHOULD be HOW I passed IN which IS some BIG SOME small"
