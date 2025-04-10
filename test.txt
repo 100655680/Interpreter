@@ -147,4 +147,6 @@ records = []
 append(records, dict {"name": "Steve", "age": 30})
 append(records, dict {"name": "Youbing", "age": 20})
 print records
+
+printupper "****i added my own keyword called printupper (this text is lower case, but using printupper, i will reprint the records using printupper as well!*******************"
 printupper records
