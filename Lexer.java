@@ -26,6 +26,11 @@ public class Lexer {
 
     private void scanToken() {
         char c = advance();
+        if (Character.isWhitespace(c)) {
+            // Note: If you need newline information for delimiting tokens,
+            // you might want to handle '\n' separately; otherwise, this works.
+            return;
+        }
         switch (c) {
             case '(':
                 addToken(TokenType.LEFT_PAREN);
