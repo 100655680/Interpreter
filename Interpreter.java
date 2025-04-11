@@ -30,6 +30,9 @@ public class Interpreter {
         for (Token token : tokens) {
             System.out.println(token);
         }
+        System.out.println("################    END OF ANALYSIS       ################");
+        System.out.println("V V V V V V V    OUTPUT OF INPUT COMMANDS      V V V V V V ");
+        System.out.println();
 
         Parser parser = new Parser(tokens);
         List<Stmt> statements;

@@ -2,20 +2,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Iterator;
+import java.awt.datatransfer.*;
+import java.io.File;
 
 // Ensure these classes are in your project:
 // Environment, Lexer, Parser, Token, and Stmt
 
-public class GUI extends JFrame {
+public class GUI2 extends JFrame {
     private JTextArea outputArea;
     private JTextArea inputArea;
     private JButton submitButton;
     private JButton closeButton;
 
-    public GUI() {
-        super("Interpreter GUI");
+    public GUI2() {
+        super("Interpreter GUI v2");
 
         // Create the non-editable output area.
         outputArea = new JTextArea();
@@ -30,6 +33,42 @@ public class GUI extends JFrame {
         inputArea = new JTextArea(10, 50);
         JScrollPane inputScrollPane = new JScrollPane(inputArea);
         inputScrollPane.setBorder(BorderFactory.createTitledBorder("Input"));
+
+        // Add drag-and-drop support to the inputArea.
+        inputArea.setTransferHandler(new TransferHandler() {
+            @Override
+            public boolean canImport(TransferHandler.TransferSupport support) {
+                // Only allow file drops
+                return support.isDataFlavorSupported(DataFlavor.javaFileListFlavor);
+            }
+
+            @Override
+            public boolean importData(TransferHandler.TransferSupport support) {
+                if (!canImport(support)) {
+                    return false;
+                }
+                try {
+                    // Get the list of files dropped
+                    List<File> files = (List<File>) support.getTransferable()
+                            .getTransferData(DataFlavor.javaFileListFlavor);
+                    if (files.size() > 0) {
+                        File file = files.get(0);
+                        // Check for .txt file (you can adjust this as needed)
+                        if (!file.getName().toLowerCase().endsWith(".txt")) {
+                            JOptionPane.showMessageDialog(null, "Only .txt files are supported.");
+                            return false;
+                        }
+                        // Read the file contents and set into the input area
+                        String content = new String(Files.readAllBytes(file.toPath()));
+                        inputArea.setText(content);
+                        return true;
+                    }
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+                return false;
+            }
+        });
 
         // Create the Submit button.
         submitButton = new JButton("Submit");
@@ -46,7 +85,7 @@ public class GUI extends JFrame {
                 inputArea.setText("");
             }
         });
-        
+
         // Create the Clear button to clear the output area.
         JButton clearButton = new JButton("Clear");
         clearButton.addActionListener(new ActionListener(){
@@ -95,7 +134,6 @@ public class GUI extends JFrame {
         OutputStream out = new OutputStream() {
             @Override
             public void write(int b) throws IOException {
-                // Append one character at a time.
                 outputArea.append(String.valueOf((char) b));
                 outputArea.setCaretPosition(outputArea.getDocument().getLength());
             }
@@ -125,8 +163,10 @@ public class GUI extends JFrame {
         for (Token token : tokens) {
             System.out.println(token);
         }
-        System.out.println("################    END OF ANALYSIS       ################");
-        System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓    OUTPUT OF INPUT COMMANDS      ↓↓↓↓↓↓↓↓↓↓↓↓↓");
+        System.out.println("#######END OF ANALYSIS#######");
+        System.out.println();
+        System.out.println();
+        System.out.println("↓↓↓↓↓↓↓↓↓↓↓↓  OUTPUT OF INPUT COMMANDS  ↓↓↓↓↓↓↓↓↓↓↓↓");
         System.out.println();
 
         // Parsing: Create a Parser and parse the program.
@@ -153,7 +193,7 @@ public class GUI extends JFrame {
         // Launch the GUI on the Event Dispatch Thread.
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                new GUI();
+                new GUI2();
             }
         });
     }
