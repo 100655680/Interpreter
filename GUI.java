@@ -66,7 +66,7 @@ public class GUI extends JFrame {
         // Panel to hold the buttons.
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         buttonPanel.add(submitButton);
-        buttonPanel.add(clearButton);  // Added Clear button
+        buttonPanel.add(clearButton);  
         buttonPanel.add(closeButton);
 
         // Panel to hold the text areas.
@@ -111,7 +111,7 @@ public class GUI extends JFrame {
     }
 
     /**
-     * Processes the multi-line code just as your original Interpreter did.
+     * Processes the multi-line code.
      * It tokenizes, prints token output, parses the tokens, and then executes
      * the statements—all printing output via System.out so that it appears in the outputArea.
      */

@@ -4,9 +4,10 @@ git stash save "Backup before pulling"
 git pull
 
 *** Compille latest version
-	*Remove .class files
+*** Remove .class files
 Get-ChildItem -Path . -Recurse -Filter *.class | Remove-Item -Force
-	*compile new version
+
+*** compile new version
 
 javac *.java
 
@@ -14,4 +15,11 @@ javac *.java
 
 java Interpreter test.txt
 
-** There are multiple tests in my script - but insturctions suggest need at least 5 test scripts, so may be best to split them out?
+
+** There are multiple tests in my script test.txt ?
+
+*** GUI version 2 (includes Drop and Drag txt file)
+
+java GUI2
+
+*** Opens GUI where I can type or import txt file

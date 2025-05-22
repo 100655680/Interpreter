@@ -8,7 +8,6 @@ import java.util.Iterator;
 import java.awt.datatransfer.*;
 import java.io.File;
 
-// Ensure these classes are in your project:
 // Environment, Lexer, Parser, Token, and Stmt
 
 public class GUI2 extends JFrame {
@@ -53,7 +52,7 @@ public class GUI2 extends JFrame {
                             .getTransferData(DataFlavor.javaFileListFlavor);
                     if (files.size() > 0) {
                         File file = files.get(0);
-                        // Check for .txt file (you can adjust this as needed)
+                        // Check for .txt file 
                         if (!file.getName().toLowerCase().endsWith(".txt")) {
                             JOptionPane.showMessageDialog(null, "Only .txt files are supported.");
                             return false;
@@ -149,7 +148,7 @@ public class GUI2 extends JFrame {
     }
 
     /**
-     * Processes the multi-line code just as your original Interpreter did.
+     * Processes the multi-line code.
      * It tokenizes, prints token output, parses the tokens, and then executes
      * the statements—all printing output via System.out so that it appears in the outputArea.
      */
